@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Lemonade Stand 2.0</title>
+		<meta name="author" content="Alex" />
+		<!-- Date: 2015-04-18 -->
+		<script type="text/javascript">
+				
+		///PURPOSE:	Input letter for menu selection (L,C,T) or (Q) to quit selection
+		///PASSED IN :	nothing
+		///RETURNED:	a single-character string: L, C, T or Q
+		function getMenuSelection()
+		{
+			var selection = "";
+			
+			///Input
+			selection = prompt ("Welcome to our lemonade stand! Would you like to get (L)emonade, a (C)ookie, a (T)-shirt, or (Q)uit?","L");
+			
+			///Conversion
+			selection = selection.toUpperCase();
+                
+			while (selection != 'L' && selection != 'C' && selection != 'T' && selection != 'Q')
+			{
+				selection = prompt ("Would you like to get (L)emonade, a (C)ookie, a (T)-shirt, or (Q)uit?","L");
+				selection = selection.toUpperCase();
+			}
+                
+			return selection;
+		}///End getMenuSelection
+		
+		///PURPOSE:	Input letter for lemonade size selection (L or S)
+		///PASSED IN :	nothing
+		///RETURNED:	a single-character string: L or S
+		function getCupSize()
+		{
+		    var size = "";
+			
+		    ///Input
+		    size = prompt("Would you like a (S)mall or a (L)arge?","L");
+			
+		    ///Conversion
+		    size = size.toUpperCase();
+			
+		    while (size != "L" && size != "S")
+		    {
+		        size = prompt("Please only select (S)mall or (L)arge","L");
+		        size = size.toUpperCase();
+		    }
+
+		    return size;
+		}///End getCupSize
+		
+		///PURPOSE:	To take inputed cup size and return proper price
+		///PASSED IN :	current value of currentSize
+		///RETURNED:	a float representing the cup price
+		function findCupPrice(currentSize)
+		{
+			var price = 0.00;
+			var SMALL_LEMON_PRICE = 1.50;
+			var LARGE_LEMON_PRICE = 2.00;
+			
+			///Decision
+			if (currentSize == "L")
+			{
+				price = LARGE_LEMON_PRICE;
+			}
+			
+			else
+			{
+				price = SMALL_LEMON_PRICE;
+			}
+			
+			return price;
+		}///End findCupPrice
+		
+		///PURPOSE:	Describes size of lemonade
+		///PASSED IN :	currentSize
+		///RETURNED:	a string describing the current size being sold
+		function getLemonDesc(currentSize)
+		{
+			///Decision
+			if (currentSize == "L")
+			{
+				description = "16 Oz Lemonade";
+			}
+			
+			else
+			{
+				description = "12 Oz Lemonade";
+			}
+			
+			return description;
+		}///End getLemonDesc
+		
+		///PURPOSE:	Helps add up how much lemonade is being sold
+		///PASSED IN : currentSize
+		///RETURNED: an integer describing the amount of lemonade being sold
+		function countLemonade(currentSize)
+		{
+			var SMALL_LEMON_SIZE = 12;
+		    var LARGE_LEMON_SIZE = 16;
+		    
+			///Decision
+			if (currentSize == "L")
+			{
+				amount = LARGE_LEMON_SIZE;
+			}
+			
+			else
+			{
+				amount = SMALL_LEMON_SIZE;
+			}
+			
+			return amount;
+		}///End countLemonade
+		
+		///PURPOSE: Input letter for cookie selection (C or O)
+		///PASSED IN: nothing
+		///RETURNED: a single-character string: C or O
+		function getCookieType()
+		{
+		    var type = "";
+			
+		    ///Input
+		    type = prompt("Would you like (C)hocolate chip or (O)atmeal?","C");///Seriously, though, ANY type of cookie is better than oatmeal...
+			
+		    ///Conversion
+		    type = type.toUpperCase();
+			
+		    while (type != "C" && type != "O")
+		    {
+		        type = prompt("Please only select (C)hocolate chip or (O)atmeal","A");
+		        type = type.toUpperCase();
+		    }
+
+		    return type;
+		}///End getCookieType
+		
+		///PURPOSE:	Describes type of cookie
+		///PASSED IN : currentType
+		///RETURNED: a string describing the current type of cookie being sold
+		function getCookieDesc(currentType)
+		{
+			///Decision
+			if (currentType == "C")
+			{
+				description = "Chocolate Chip Cookie";
+			}
+			
+			else
+			{
+				description = "Oatmeal Cookie";
+			}
+			
+			return description;
+		}///End getCookieDesc	
+		
+		///PURPOSE:	Input letter for shirt selection (R or A)
+		///PASSED IN: nothing
+		///RETURNED: a single-character string: R or A
+		function getShirtType()
+		{
+		    var type = "";
+			
+		    ///Input
+		    type = prompt("Would you like a (R)egular or an (A)utographed one?","A");
+			
+		    ///Conversion
+		    type = type.toUpperCase();
+			
+		    while (type != "R" && type != "A")
+		    {
+		        type = prompt("Please only select (R)egular or (A)utographed","A");
+		        type = type.toUpperCase();
+		    }
+
+		    return type;
+		}///End getShirtType
+		
+		///PURPOSE:	Output proper shirt prices
+		///PASSED IN: currentType
+		///RETURNED: a float representing the shirt price
+		function findShirtPrice(currentType)
+		{
+			var price = 0.00;
+			var REGULAR_TEE = 8.00;
+		    var SIGNED_TEE = 15.00;
+			
+			///Decision
+			if (currentType == "A")
+			{
+				price = SIGNED_TEE;
+			}
+			
+			else
+			{
+				price = REGULAR_TEE;
+			}
+			
+			return price;
+		}///End findShirtPrice
+		
+		///PURPOSE:	Describes type of shirt
+		///PASSED IN : currentType
+		///RETURNED: a string describing the current type of shirt being sold
+		function getShirtDesc(currentType)
+		{
+			///Decision
+			if (currentType == "R")
+			{
+				description = "Regular T-shirt";
+			}
+			
+			else
+			{
+				description = "Autographed T-shirt";
+			}
+			
+			return description;
+		}///End getShirtDesc	
+		
+		///PURPOSE:	Main driver for program
+		///PASSED IN: Nothing
+		///RETURNED: Nothing
+		function main()
+		{
+			var COOKIE_PRICE = 0.75;
+		    var selection = "";
+		    var currentSize = "";
+		    var currentType = "";
+		    var currentDesc = "";
+		    var currentPrice = 0.00;
+		    var COUNTER_AMT = 1;
+		    var totalTransactions = 0;
+		    var totalOzLemonade = 0;
+		    var totalNumChocolate = 0;
+		    var totalNumOat = 0;
+		    var totalNumTee = 0;
+		    var totalSales = 0.00;
+			
+		    ///Input
+		    selection = getMenuSelection();
+			
+			while (selection != "Q")
+			{///Begin loop
+		        if (selection == "L")
+		        {
+		        	currentSize = getCupSize();
+		    	    currentPrice = findCupPrice(currentSize);
+		    	    currentDesc = getLemonDesc(currentSize);
+		    	    totalOzLemonade = totalOzLemonade + countLemonade(currentSize);
+		        }
+		        else if (selection == "C")
+		    	    {
+		    	        currentType = getCookieType();
+		    	        currentPrice = COOKIE_PRICE;
+		    	        currentDesc = getCookieDesc(currentType);
+		    	        if (currentType == "C")
+		    	        {
+		    	        	totalNumChocolate = totalNumChocolate + COUNTER_AMT;
+		    	        }
+		    	        else
+		    	        {
+		    	        	totalNumOat = totalNumOat + COUNTER_AMT;
+		    	        }
+		    	    }
+		    	    else if (selection == "T")
+		    	         {
+		    	             currentType = getShirtType();
+		    	             currentPrice = findShirtPrice(currentType);
+		    	             currentDesc = getShirtDesc(currentType);
+		    	             totalNumTee = totalNumTee +  COUNTER_AMT;
+		    	         }
+                alert("Ok, so that will be one " + currentDesc + ", and it will cost $" + currentPrice.toFixed(2));
+                
+                ///Calculation
+                totalTransactions = totalTransactions +  COUNTER_AMT;
+                totalSales = totalSales + currentPrice;
+                
+                ///Input
+		    	selection = getMenuSelection();
+		    	
+            }///End loop
+            
+            ///Output
+            document.write("<b>=======END OF DAY SALES TOTALS=======</b><br>");
+			document.write("* * * * * * * * * * * * * * * * * * * * * * * * * * * * *<br>");
+            document.write("Total number of transactions today = " + totalTransactions + "<br>");
+            document.write("Total ounces of lemonade sold = " + totalOzLemonade + "<br>");
+            document.write("Total number of chocolate chip cookies sold = " + totalNumChocolate + "<br>");
+			document.write("Total number of oatmeal cookies sold= " + totalNumOat + "<br>");
+            document.write("Total number of shirts sold= " + totalNumTee + "<br>");
+            document.write("     <br>");
+			document.write("<b>The total sales equal $" + totalSales.toFixed(2) + "!</b><br>");
+			document.write("* * * * * * * * * * * * * * * * * * * * * * * * * * * * *<br>");
+		}///End main
+			
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			///FILE: LemonadeStand2.html
+			///PROG: Alex Mandigo
+			///PURP: To track sales made at a lemonade stand.
+			
+			main();
+			
+			///END PROGRAM
+		</script>
+
+	</body>
+</html>
+
